@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import InstagramFeed from "../components/instagram-feed"
 import { rhythm } from "../utils/typography"
 
 class BlogIndex extends React.Component {
@@ -11,7 +12,7 @@ class BlogIndex extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
-
+    const social = data.site.siteMetadata.social
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
@@ -38,6 +39,8 @@ class BlogIndex extends React.Component {
             </div>
           )
         })}
+        
+        <InstagramFeed username={social.instagram}></InstagramFeed>
       </Layout>
     )
   }
@@ -49,7 +52,10 @@ export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        title
+        title,
+        social {
+          instagram
+        }
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
