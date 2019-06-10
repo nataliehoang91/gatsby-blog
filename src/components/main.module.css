@@ -1,0 +1,29 @@
+.wrapImg{
+    
+    margin: 0 auto 12px auto;
+    
+}
+
+.img{
+    flex: 0 0 96px;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+}
+.inputStyle {
+  height: 40px;
+  width: 200px;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.TodoListStyle {
+  font-size: 15px;
+}
+
+.bgstyle {
+  background-color: rgb(177, 253, 237) !important;
+  width: 500px;
+}

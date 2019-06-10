@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styles from "../components/img.module.css"
+import styles from "../components/main.module.css"
 
 class InstagramFeed extends React.Component {
   constructor(props) {
