@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import styles from "../components/img.module.css"
 
 class InstagramFeed extends React.Component {
   constructor(props) {
@@ -26,14 +27,14 @@ class InstagramFeed extends React.Component {
 
   render() {
     return (
-      <div className="instagramFeedContainer">
-        {this.state.images.map(url => (
-          <img
-            src={url}
-            className="instagramImage"
-          />
-        ))}
-      </div>
+      <>
+        <h1>My latest memories</h1>
+        <div className={styles.wrapImg}>
+          {this.state.images.map(url => (
+            <img src={url} className={styles.img} />
+          ))}
+        </div>
+      </>
     )
   }
 }

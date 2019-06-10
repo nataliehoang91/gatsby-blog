@@ -40,7 +40,7 @@ class BlogIndex extends React.Component {
           )
         })}
         
-        <InstagramFeed username={social.instagram}></InstagramFeed>
+        <InstagramFeed username={social.instagram} style="width: 100px;"></InstagramFeed>
       </Layout>
     )
   }
