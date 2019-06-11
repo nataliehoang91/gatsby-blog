@@ -2,54 +2,67 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import styles from "../components/main.module.css"
 
-
 class Todolist extends React.Component {
   state = {
     TodoInput: "",
     TodoList: [],
   }
   handleInputChange = e => {
+    this.setState({
+      TodoInput: e.target.value,
+    })
+  }
+
+  handleSubmit = () => {
+    this.state.TodoList.unshift(this.state.TodoInput)
     this.setState(
       {
-        TodoInput: e.target.value,
-      },
-      () => {
-        console.log(this.state.TodoInput)
+        TodoList: this.state.TodoList,
+        TodoInput: "",
       }
     )
   }
 
-  handleSubmit = () => {
-    console.log("Submitttt")
+  removeItem = index => {
+    this.state.TodoList.splice(index, 1)
     this.setState({
-      TodoList: TodoList.unshift(TodoInput),
-        TodoInput:""
-
-    },()=>{
-        console.log(this.state.TodoList)
+      TodoList: this.state.TodoList,
     })
   }
 
   render() {
+   
     return (
       <div>
-        <div class="text-center">
+        <div className="text-center">
           <input
             id="userInput"
-            class="inputStyle"
+            className="inputStyle"
             type="text"
-            value={this.state.value}
+            value={this.state.TodoInput}
             onChange={this.handleInputChange}
           />
-          <button id="submitBtn" class="btnStyle" onClick={this.handleSubmit}>
+          <button
+            id="submitBtn"
+            className="btnStyle"
+            onClick={this.handleSubmit}
+          >
             Add
           </button>
-          <input id="filterDone" type="checkbox" />
+        </div>
+        <div>
+          <ul>
+            {this.state.TodoList.map((item, index) => {
+              return (
+                <li key={index.toString()}>
+                  {item} <button onClick={() => this.removeItem(index)}>X</button>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </div>
     )
   }
 }
-export default Todolist;
-
-
+export default Todolist
